@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portifólio Gleice</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ 
+  <!-- Blobs de fundo -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+ 
+  <!-- Nav -->
+  <nav>
+    <a class="logo" href="#">
+      <div class="logo-icon">🌸</div>
+      Portifólio Gleice
+    </a>
+    <ul class="nav-links">
+      <li><a href="inicio.html">Início</a></li>
+      <li><a href="tela2.html">Sobre mim</a></li>
+      <li><a href="tela3.html">Projetos</a></li>
+      <li><a href="tela4.html">Contato</a></li>
+    </ul>
+  </nav>
+ 
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="badge">Bem vindo ao meu Portifólio website!</div>
+ 
+      <h1 class="hero-heading">
+        Web<br>
+        <span class="italic-pink">Desenvolvedora</span><br>
+        Front e Backend.
+      </h1>
+ 
+      <p class="hero-sub">
+        Trabalho com design de sites e apps, desenvolvimento de websites tanto front (interface) quanto backend (funcionamento) e banco de dados.
+      </p>
+ 
+      <div class="cta-group">
+        <a href="tela3.html" class="btn-primary">
+          Veja meus projetos! <span class="arrow">→</span>
+        </a>
+        <a href="tela2.html" class="btn-secondary">Sobre mim</a>
+      </div>
+    </div>
+ 
+    <div class="hero-right">
+      <div class="card-main">
+        <div class="img">
+          <img src="Screenshot 2026-03-24 15.59.09.png">
+        </div>
+      </div>
+ 
+      <div class="card-mini">
+        <div class="focus-label">Principal hábilidade</div>
+        <div class="focus-value">Desenvolvimento de sites</div>
+      </div>
+    </div>
+ 
+    <!-- Scroll hint -->
+  </section>
+   <script>
+    // Parallax suave no card ao mover o mouse
+    const cardMain = document.querySelector('.card-main');
+    document.addEventListener('mousemove', e => {
+      const { innerWidth: W, innerHeight: H } = window;
+      const rx = ((e.clientY / H) - 0.5) * 10;
+      const ry = ((e.clientX / W) - 0.5) * -10;
+      cardMain.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)`;
+    });
+    document.addEventListener('mouseleave', () => {
+      cardMain.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+    });
+  </script>
+  </body>

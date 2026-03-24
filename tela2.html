@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bloomfolio – About Me</title>
+  <link rel="stylesheet" href="tela2.css" />
+  <head>
+    <body>
+      <nav>
+    <a class="logo" href="#">
+      <div class="logo-icon">🌸</div>
+      Portifólio Gleice
+    </a>
+    <ul class="nav-links">
+      <li><a href="inicio.html">Início</a></li>
+      <li><a href="tela2.html">Sobre mim</a></li>
+      <li><a href="tela3.html">Projetos</a></li>
+      <li><a href="tela4.html">Contato</a></li>
+    </ul>
+  </nav>
+ 
+  <section class="about-section" id="about">
+ 
+    <h2 class="section-title reveal">Sobre mim</h2>
+    <span class="section-divider reveal"></span>
+ 
+    <div class="about-grid">
+ 
+      <!-- ── Left ── -->
+      <div class="about-left">
+ 
+        <div class="photo-card reveal">
+          <div class="photo-card-inner">
+            <img src="img1.jpeg" class="photo-blob">
+          </div>
+        </div>
+ 
+        <div class="info-card reveal" style="transition-delay: 0.1s">
+          <div class="info-icon">👤</div>
+          <div>
+            <div class="info-card-label">Area Profissional</div>
+            <div class="info-card-value">Desenvolvedora Full Stack</div>
+          </div>
+        </div>
+ 
+        <div class="info-card reveal" style="transition-delay: 0.2s">
+          <div class="info-icon">🎯</div>
+          <div>
+            <div class="info-card-label">Solft-skills</div>
+            <div class="info-card-value">Comunicação, Criatividade, Empatia e Proatividade</div>
+          </div>
+        </div>
+ 
+      </div>
+ 
+      <!-- ── Right ── -->
+      <div class="about-right">
+ 
+        <div class="reveal">
+          <div class="story-label">
+            <span class="heart">♡</span> Minha História
+          </div>
+          <p class="story-text">
+            Olá! Me chamo Gleiciane Júlia e curso ADS (Análise e Desenvolvimento de Sistemas) no Mediotec Senac, estou cursando o terceiro ano médio, além de ter certificados em Robótica, Segurança de redes e Expreção criativa.
+          </p>
+        </div>
+ 
+        <!-- Bio Refiner -->
+        <div class="bio-refiner reveal">
+
+  <div class="refiner-header">
+    Certificados
+  </div>
+
+  <p class="refiner-desc">
+    Meus certificados e cursos concluídos.
+  </p>
+
+
+  <div class="certificados-grid">
+
+    <!-- ITEM 1 -->
+    <div class="cert-item">
+      <img src="certificadociber.png">
+      <div class="cert-text">
+        <h4>Introdução a Ciber Segurança</h4>
+        <span>Cisco Networking Academy - 2026</span>
+      </div>
+    </div>
+
+    <!-- ITEM 2 -->
+    <div class="cert-item">
+      <img src="certificado2.png">
+      <div class="cert-text">
+        <h4>Gerenciamento de Ameaças Cibernética</h4>
+        <span>Cisco Networking Academy - 2025</span>
+      </div>
+    </div>
+
+    <!-- ITEM 3 -->
+    <div class="cert-item">
+      <img src="certificado3.png">
+      <div class="cert-text">
+        <h4>Segurança de Rede</h4>
+        <span>Cisco Networking Academy - 2025</span>
+      </div>
+    </div>
+
+    <!-- ITEM 4 -->
+    <div class="cert-item">
+      <img src="certificado4.png">
+      <div class="cert-text">
+        <h4>Fundamentos do Hardware do Computador</h4>
+        <span>Cisco Networking Academy - 2024</span>
+      </div>
+    </div>
+
+    <!-- ITEM 5 -->
+    <div class="cert-item">
+      <img src="curso5.png">
+      <div class="cert-text">
+        <h4>Róbotica + Empreendedorismo</h4>
+        <span>Associação satélite - Prefeitura Municipal Paulista - 2026</span>
+      </div>
+    </div>
+
+    <!-- ITEM 6 -->
+    <div class="cert-item">
+      <img src="curso6.png">
+      <div class="cert-text">
+        <h4>Letramento científico e programação Full-Stack</h4>
+        <span>CESAR School</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+  </section>
+ 
+  <script>
+    // ── Scroll reveal ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+ 
+    revealEls.forEach(el => observer.observe(el));
+ 
+    // Dispara imediatamente para elementos já visíveis na carga
+    window.addEventListener('load', () => {
+      revealEls.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) el.classList.add('visible');
+      });
+    });
+ 
+    // ── Bio Refiner – Anthropic API ──
+    async function refineBio() {
+      const input = document.getElementById('bioInput').value.trim();
+      if (!input) return;
+ 
+      const btn    = document.getElementById('refineBtn');
+      const result = document.getElementById('bioResult');
+ 
+      btn.disabled = true;
+      btn.innerHTML = '<span class="loading-dots"><span>•</span><span>•</span><span>•</span></span>';
+      result.classList.remove('visible');
+ 
+      try {
+        const res = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'claude-sonnet-4-20250514',
+            max_tokens: 1000,
+            messages: [{
+              role: 'user',
+              content: `You are a professional bio writer. Transform the following keywords or bullet points into a polished, warm, and engaging 2–3 sentence professional bio. Write in first person. Be concise and impactful. Return ONLY the bio text, no extra commentary.\n\nKeywords: ${input}`
+            }]
+          })
+        });
+ 
+        const data = await res.json();
+        const text = data.content?.map(b => b.text || '').join('') || 'Could not generate bio. Please try again.';
+        result.textContent = text;
+        result.classList.add('visible');
+      } catch (err) {
+        result.textContent = 'Oops! Something went wrong. Please try again.';
+        result.classList.add('visible');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '✨ Refine My Bio';
+      }
+    }
+  </script>
+ 
+</body>
+</html>

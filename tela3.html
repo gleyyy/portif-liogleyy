@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portifólio Gleice</title>
+
+<link rel="stylesheet" href="tela3.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">Portifólio Gleice</div>
+
+    <nav>
+        <a href="inicio.html">Início</a>
+        <a href="tela2.html">Sobre mim</a>
+        <a href="tela3.html">Projetos</a>
+        <a href="tela4.html">Contato</a>
+    </nav>
+</header>
+
+
+<section class="top">
+
+    <div>
+        <h1>Aqui estão Alguns Projetos!</h1>
+        <p>
+            Abaixo você pode analisar alguns dos meus projetos, nas linguiagem que trabalho (HTML, CSS, JavaScript e Python).
+        </p>
+    </div>
+
+</section>
+
+
+
+<section class="cards">
+
+    <div class="card">
+        <div class="tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+
+        <h3>EduCode</h3>
+
+        <p>
+            O Educode foi um site criado para ajudar programadores iniciantes a aprimorarem suas hábilidades em HTML, CSS e JavaScript.
+        </p>
+
+        <a link href="https://educode20.netlify.app/">Abrir Projeto</a>
+    </div>
+
+
+
+    <div class="card">
+        <div class="tags">
+            <span>Python</span>
+            <span>JavaScript</span>
+        </div>
+
+        <h3>Maratona Python e JavaScript</h3>
+
+        <p>
+            A maratona é um compilado de alguns mini códigos em Python e JS para visualizar as hábilidades nas linguagens.
+        </p>
+
+        <a href="https://colab.research.google.com/drive/1N8Lqb_CBR2_uGpoGGOysqIpgosOFsoW0">Abrir Maratona</a>
+    </div>
+
+</section>
+
+
+<script>
+    const cards = document.querySelectorAll(".card");
+
+cards.forEach(card => {
+
+    card.addEventListener("mouseenter", () => {
+        card.style.background = "#FFF0F3";
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.background = "white";
+    });
+
+});
+</script>
+
+</body>
+</html>
